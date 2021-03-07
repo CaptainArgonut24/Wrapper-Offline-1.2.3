@@ -14,12 +14,11 @@
 			"statusCode": 302,
 			"content": ""
 		},
-		"/go/character_creator/family": {
+		"/goapi/getAssetTags": {
 			"headers": {
-				"Location": "/cc?themeId=family&bs=adam"
+				"Content-Type": "application/json"
 			},
-			"statusCode": 302,
-			"content": ""
+			"content": "111"
 		},
 		"/crossdomain.xml": {
 			"headers": {

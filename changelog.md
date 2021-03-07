@@ -2,6 +2,16 @@
 # Wrapper: Offline Changelog
 This changelog is based off [Keep a Changelog](https://keepachangelog.com) and ~~somewhat but not really~~ adheres to [Semantic Versioning](https://semver.org/). If you have no idea what that means, basically this changelog is formatted in a specific consistent way, and version numbers are formatted as X.Y.Z, X being a major not-backwards-compatible update, Y being a feature update, and X being bug fixes.
 
+## Version 1.2.3 - 2021-03-06 - i am HUNGRY FOR UPDATES!!!
+### Added
+  - Character browser
+### Changed
+  - Centered character creator
+### Fixed
+  - Remove the Voicery TTS engine following their shutdown
+  - Voiceforge fix
+  - fullscreen in video player
+
 ## Version 1.2.2 - 2020-07-06 - sufferingggggg
 ### Changed
   - CD commands are now PUSHD commands

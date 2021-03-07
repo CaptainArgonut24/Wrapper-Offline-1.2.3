@@ -3,6 +3,7 @@ const env = Object.assign(process.env,
 	require('./config'));
 
 const http = require('http');
+const chr = require("./character/redirect");
 const pmc = require('./character/premade');
 const chl = require('./character/load');
 const chs = require('./character/save');
@@ -36,6 +37,7 @@ const functions = [
 	chs,
 	asL,
 	tsl,
+	chr,
 	ast,
 	mvm,
 	mvl,
@@ -54,3 +56,5 @@ module.exports = http.createServer((req, res) => {
 	const found = functions.find(f => f(req, res, parsedUrl));
 	if (!found) { res.statusCode = 404; res.end(); }
 }).listen(env.PORT || env.SERVER_PORT, console.log);
+// 2epik4u is weird
+// update: still weird

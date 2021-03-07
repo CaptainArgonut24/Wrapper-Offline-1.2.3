@@ -1,7 +1,7 @@
 :: Wrapper: Offline Launcher
 :: Author: benson#0411
 :: License: MIT
-set WRAPPER_VER=1.2.1
+set WRAPPER_VER=1.2.3
 title Wrapper: Offline v%WRAPPER_VER% [Initializing...]
 
 ::::::::::::::::::::
@@ -85,7 +85,7 @@ if not exist "utilities\checks\disclaimer.txt" (
 
 :: Welcome, Director Ford!
 echo Wrapper: Offline
-echo A project from VisualPlugin adapted by Benson
+echo A project from VisualPlugin adapted by the W:O Team
 echo Version !WRAPPER_VER!
 echo:
 
@@ -746,7 +746,7 @@ cls
 
 echo:
 echo Wrapper: Offline v!WRAPPER_VER! running
-echo A project from VisualPlugin adapted by Benson
+echo A project from VisualPlugin adapted by the W:O Team
 echo:
 if !VERBOSEWRAPPER!==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
 if !VERBOSEWRAPPER!==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
@@ -787,6 +787,9 @@ if /i "!choice!"=="watch benson on youtube" goto w_a_t_c_h
 if /i "!choice!"=="browser slayer" goto slayerstestaments
 if /i "!choice!"=="patch" goto patchtime
 if /i "!choice!"=="random" goto sayarandom
+if /i "!choice!"=="narutofan420" echo i am narutofan420 i am a naruto fan i watch naruto i watched all 3 series and still watch it & goto wrapperidle
+if /i "!choice!"=="die" echo die please & goto wrapperidle
+if /i "!choice!"=="aaron doan" echo YOU^^!^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
 :: dev options
 if /i "!choice!"=="amnesia" goto wipe_save
 if /i "!choice!"=="restart" goto restart

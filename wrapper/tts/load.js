@@ -45,32 +45,32 @@ function processVoice(voiceName, text) {
 				break;
 			}
 			case 'cepstral':
-			case 'voiceforge': {
-				https.get('https://www.voiceforge.com/demo', r => {
-					const cookie = r.headers['set-cookie'];
-					var q = qs.encode({
-						voice: voice.arg,
-						voiceText: text,
-					});
-					var buffers = [];
-					var req = https.get({
-						host: 'www.voiceforge.com',
-						path: `/demos/createAudio.php?${q}`,
-						headers: { Cookie: cookie },
-						method: 'GET',
-					}, r => {
-						r.on('data', b => buffers.push(b));
-						r.on('end', () => {
-							const html = Buffer.concat(buffers);
-							const beg = html.indexOf('id="mp3Source" src="') + 20;
-							const end = html.indexOf('"', beg);
-							const loc = html.subarray(beg, end).toString();
-							get(`https://www.voiceforge.com${loc}`).then(res).catch(rej);
-						})
-					});
-				});
-				break;
-			}
+			case "cepstral": {
+                https.get('https://www.cepstral.com/en/demos', r => {
+                    const cookie = r.headers['set-cookie'];
+                    var q = qs.encode({
+                        voice: voice.arg,
+                        voiceText: text,
+                        rate: 170,
+                        pitch: 1,
+                        sfx: 'none',
+                    });
+                    var buffers = [];
+                    var req = https.get({
+                        host: 'www.cepstral.com',
+                        path: `/demos/createAudio.php?${q}`,
+                        headers: { Cookie: cookie },
+                        method: 'GET',
+                    }, r => {
+                        r.on('data', b => buffers.push(b));
+                        r.on('end', () => {
+                            var json = JSON.parse(Buffer.concat(buffers));
+                            get(`https://www.cepstral.com${json.mp3_loc}`).then(res).catch(rej);
+                        })
+                    });
+                });
+                break;
+            }
 			case 'vocalware': {
 				var q = qs.encode({
 					EID: voice.arg[0],
@@ -93,24 +93,6 @@ function processVoice(voiceName, text) {
 						Origin: 'https://www.vocalware.com',
 						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
 					},
-				}, r => {
-					var buffers = [];
-					r.on('data', d => buffers.push(d));
-					r.on('end', () => res(Buffer.concat(buffers)));
-					r.on('error', rej);
-				});
-				break;
-			}
-			case 'voicery': {
-				var q = qs.encode({
-					text: text,
-					speaker: voice.arg,
-					ssml: text.includes('<'),
-					//style: 'default',
-				});
-				https.get({
-					host: 'www.voicery.com',
-					path: `/api/generate?${q}`,
 				}, r => {
 					var buffers = [];
 					r.on('data', d => buffers.push(d));
